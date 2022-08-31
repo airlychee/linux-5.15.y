@@ -21,6 +21,7 @@
 		mmc0 = &sd_emmc_a; /* SDIO */
 		mmc1 = &sd_emmc_b; /* SD card */
 		mmc2 = &sd_emmc_c; /* eMMC */
+		serial1 = &uart_A; /* bluetooth */
 	};
 
 	chosen {
@@ -2322,8 +2323,11 @@
 				interrupts = <GIC_SPI 26 IRQ_TYPE_EDGE_RISING>;
 				clocks = <&xtal>, <&clkc CLKID_UART0>, <&xtal>;
 				clock-names = "xtal", "pclk", "baud";
-				status = "disabled";
+				status = "okay";
 				fifo-size = <128>;
+				pinctrl-0 = <&uart_a_pins>, <&uart_a_cts_rts_pins>;
+ 				uart-has-rtscts;
+  				pinctrl-names = "default";
 			};
 		};
 
